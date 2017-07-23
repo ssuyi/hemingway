@@ -1,17 +1,16 @@
+<html{{ with .Site.LanguageCode }} lang="{{ . }}"{{ end }}>
+<head>
+  {{ partial "head" . }}
+</head>
 <body>
   {{ partial "header" . }}
-  {{ partial "nav" . }}
   <section class="section">
-    <div class="container">
-      <h2 class="subtitle is-6">{{ .Date.Format "January 2, 2006" }}</h2>
-      <h1 class="title">{{ .Title }}</h1>
-      {{ if .Params.tags }}
-      {{ partial "tags" .Params.tags }}
-      {{ end }}
+    <article class="container">
+      {{ partial "article_header" . }}
       <div class="content">
         {{ .Content }}
       </div>
-    </div>
+    </article>
   </section>
   {{ partial "disqus" . }}
   {{ partial "footer" . }}

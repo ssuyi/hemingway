@@ -1,15 +1,15 @@
+<!DOCTYPE html>
+<html{{ with .Site.LanguageCode }} lang="{{ . }}"{{ end }}>
+<head>
+  {{ partial "head" . }}
+</head>
 <body>
   {{ partial "header" . }}
-  {{ partial "nav" . }}
   <section class="section">
     <div class="container">
-      {{ range sort .Paginator.Pages }}
+      {{ range where (sort .Paginator.Pages) "Section" "blog" }}
       <article>
-        <h2 class="subtitle is-6">{{ .Date.Format "January 2, 2006" }}</h2>
-        <h1 class="title"><a href="{{ .Permalink }}">{{ .Title }}</a>{{ if .Draft }} ::Draft{{ end }}</h1>
-        {{ if .Params.tags }}
-        {{ partial "tags" .Params.tags }}
-        {{ end }}
+        {{ partial "article_header" . }}
         <div class="content">
           {{ .Summary | plainify | safeHTML }}
           {{ if .Truncated }}
