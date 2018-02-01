@@ -3,9 +3,11 @@
     <a href="{{ .Permalink }}">
       <h1 class="title">{{ .Title }}</h1>
     </a>
+    {{ if not .Params.hidedate }}
     <div class="level-item has-text-left">
       <h2 class="subtitle is-small">{{ .Date.Format "January 2, 2006" }}</h2>
     </div>
+    {{ end }}
   </div>
   <div class="level-right">
     {{ if .Params.tags }}
