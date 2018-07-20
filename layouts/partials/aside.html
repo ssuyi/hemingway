@@ -1,0 +1,23 @@
+<aside>
+  <ul>
+    {{ if .Params.categories }}
+    <li>
+      Categories: 
+      {{ range $i, $c := .Params.categories }}
+        {{ if $i }}, {{ end }}
+        <a href="/categories/{{$c | urlize }}/">{{ $c }}</a>
+      {{ end }}
+    </li>
+    {{ end }}
+
+    {{ if .Params.tags }}
+    <li>
+      {{ range $i, $t := .Params.tags }}
+        {{ if $i }}, {{ end }}
+        <a href="/tags/{{$t | urlize }}/">#{{ $t }}</a>
+      {{ end }}
+    </li>
+    {{ end }}
+  </ul>
+</aside>
+
