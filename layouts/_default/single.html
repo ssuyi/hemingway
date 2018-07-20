@@ -11,5 +11,7 @@
     </div>
   </div>
 </section>
-{{ partial "disqus" . }}
+{{ if eq .Section "posts" }}
+  {{ partial "disqus" . }}
+{{ end }}
 {{ partial "footer" . }}
