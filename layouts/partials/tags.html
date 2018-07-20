@@ -1,0 +1,4 @@
+{{ range $i, $t := .Params.tags }}
+  {{ if $i }} {{ end }}
+  <a href="/tags/{{$t | urlize }}/">#{{ $t }}</a>
+{{ end }}

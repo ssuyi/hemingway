@@ -2,14 +2,13 @@
 {{ partial "nav" . }}
 <section class="section">
   <div class="container">
-    {{ if isset .Params "date" }}
-    <h2 class="subtitle is-6">{{ .Date.Format "January 2, 2006" }}</h2>
-    {{ end }}
     <h1 class="title">{{ .Title }}</h1>
+    {{ if isset .Params "date" }}
+    <h2 class="subtitle is-6">{{ .Date.Format "January 2, 2006" }} {{ partial "tags" . }}</h2>
+    {{ end }}
     <div class="content">
       {{ .Content }}
     </div>
-      {{ partial "aside" . }}
   </div>
 </section>
 {{ partial "disqus" . }}
