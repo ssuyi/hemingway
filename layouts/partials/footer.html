@@ -1,21 +1,11 @@
 <section class="section">
   <div class="container has-text-centered">
-      <div class="level is-mobile" style="justify-content: center">
-        {{ range .Site.Params.social }}
-        <a class="level-item is-narrow" href="{{ .url }}">
-          <span class="icon">
-            <i class="fa {{ .fa_icon }}"></i>
-          </span>
-        </a>
-        {{ end }}
-      </div>
-
     <p>{{ .Site.Copyright | safeHTML }}</p>
   </div>
 </section>
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
 {{ range .Site.Params.highlight.languages }}
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/{{ . }}.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/languages/{{ . }}.min.js"></script>
 {{ end }}
 <script>hljs.initHighlightingOnLoad();</script>
 {{ if .Site.GoogleAnalytics }}
