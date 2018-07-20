@@ -1,1 +1,30 @@
-<!-- This theme is not supported list page -->
+<!DOCTYPE html>
+<html{{ with .Site.LanguageCode }} lang="{{ . }}"{{ end }}>
+<head>
+  {{ partial "head" . }}
+</head>
+<body>
+  {{ partial "header" . }}
+  <section class="section">
+    <div class="container">
+      {{ range where (sort .Paginator.Pages) "Section" "blog" }}
+      <article>
+        {{ partial "article_header" . }}
+        <div class="content">
+          {{ .Summary | plainify | safeHTML }}
+          {{ if .Truncated }}
+          ...<a class="is-link" href="{{ .Permalink }}" style="height:28px">
+            Read more
+            <span class="icon is-small">
+              <i class="fa fa-angle-double-right"></i>
+            </span>
+          </a>
+          {{ end }}
+        </div>
+      </article>
+      {{ end }}
+    </div>
+  </section>
+  {{ partial "pager" . }}
+  {{ partial "footer" . }}
+</body>

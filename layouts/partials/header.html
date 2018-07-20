@@ -1,12 +1,27 @@
-<!DOCTYPE html>
-<html{{ with .Site.LanguageCode }} lang="{{ . }}"{{ end }}>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{ .Title }}{{ if eq .IsHome false }} | {{ .Site.Title }}{{ end }}</title>
-<link rel="stylesheet" href="{{ .Site.BaseURL }}/css/style.css">
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-{{ with .Site.Params.highlight.style }}
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/{{ . }}.min.css">
-{{ else }}
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
-{{ end }}
+<header class="page-header">
+  <div class="container">
+    <nav class="navbar level is-mobile">
+      <a class="level-left" href="{{ .Site.BaseURL }}/">
+        <div class="portrait-parent">
+          <div class="my-photo"></div>
+        </div>
+        <h1 class="title is-hidden-touch">{{ .Site.Title }}</h1>
+      </a>
+      <div class="level-item">
+        {{ $currentPage := . }}
+        {{ range .Site.Menus.main }}
+        <a class="menu-item{{if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} active{{end}}" href="{{.URL}}">{{ .Name }}</a>
+        {{ end }}
+      </div>
+      <div class="level-right is-hidden-mobile">
+        {{ range .Site.Params.social }}
+        <a class="level-item" href="{{ .url }}">
+          <span class="icon">
+            <i class="fa {{ .fa_icon }}"></i>
+          </span>
+        </a>
+        {{ end }}
+      </div>
+    </nav>
+  </div>
+</header>
