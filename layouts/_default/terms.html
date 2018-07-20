@@ -2,14 +2,16 @@
 {{ partial "nav" . }}
 <section class="section">
   <div class="container">
-    {{ if isset .Params "date" }}
-    <h2 class="subtitle is-6">{{ .Date.Format "January 2, 2006" }}</h2>
-    {{ end }}
     <h1 class="title">{{ .Title }}</h1>
     <div class="content">
-      {{ .Content }}
+      <ul>
+        {{ $data := .Data }}
+        {{ range $key, $value := .Data.Terms }}
+        <li><a href="/{{ $data.Plural }}/{{ $key | urlize }}">{{ $key }}</a> ({{ len $value }})</li>
+        {{ end }}
+      </ul>
     </div>
   </div>
 </section>
-{{ partial "disqus" . }}
 {{ partial "footer" . }}
+

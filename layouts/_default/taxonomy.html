@@ -2,20 +2,17 @@
 {{ partial "nav" . }}
 <section class="section">
   <div class="container">
-    {{ range (.Paginate (.Data.Pages.GroupByDate "2006")).PageGroups  }}
-    <h1 class="title">{{ .Key }}</h1>
+    <h1 class="title">{{ .Title }}</h1>
     <div class="content">
       <ul>
         {{ range .Pages }}
         <li>
           <a href="{{ .Permalink }}">{{ if .Draft }}Draft: {{end}}{{ .Title | markdownify }}</a>
-          <time class="date-meta">{{ .Date.Format "Jan 2" }}</time>
+          <time class="date-meta">{{ .Date.Format "2006 Jan 2" }}</time>
         </li>
         {{ end }}
       </ul>
     </div>
-    {{ end }}
   </div>
 </section>
-{{ partial "pager" . }}
 {{ partial "footer" . }}
